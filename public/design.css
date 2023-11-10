@@ -1,0 +1,15 @@
+.label {
+    color: #8b0304;
+    border-color: #8b0304;
+}
+
+.button {
+    color: #6d6e71;
+}
+
+.rows .webix_cell:nth-child(2n){
+    background-color:#edeff5;
+}
+.rows .webix_row_select:nth-child(2n){
+    background:#eff;
+}
