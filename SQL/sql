@@ -1,0 +1,74 @@
+CREATE DATABASE `addressbook` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+
+-- addressbook.addressbook definition
+
+CREATE TABLE `addressbook` (
+  `domain_id` int(9) unsigned NOT NULL DEFAULT 0,
+  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(255) NOT NULL,
+  `middlename` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `nickname` varchar(255) DEFAULT NULL,
+  `company` varchar(255) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `address` text NOT NULL,
+  `addr_long` text DEFAULT NULL,
+  `addr_lat` text DEFAULT NULL,
+  `addr_status` text DEFAULT NULL,
+  `home` text NOT NULL,
+  `mobile` text NOT NULL,
+  `work` text NOT NULL,
+  `fax` text NOT NULL,
+  `email` text NOT NULL,
+  `email2` text NOT NULL,
+  `email3` text DEFAULT NULL,
+  `im` text DEFAULT NULL,
+  `im2` text DEFAULT NULL,
+  `im3` text DEFAULT NULL,
+  `homepage` text NOT NULL,
+  `bday` tinyint(2) NOT NULL,
+  `bmonth` varchar(50) NOT NULL,
+  `byear` varchar(4) NOT NULL,
+  `aday` tinyint(2) DEFAULT NULL,
+  `amonth` varchar(50) DEFAULT NULL,
+  `ayear` varchar(4) DEFAULT NULL,
+  `address2` text NOT NULL,
+  `phone2` text NOT NULL,
+  `notes` text NOT NULL,
+  `photo` mediumtext DEFAULT NULL,
+  `x_vcard` mediumtext DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `deprecated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `password` varchar(256) DEFAULT NULL,
+  `login` date DEFAULT NULL,
+  `role` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`,`deprecated`)
+) ENGINE=MyISAM AUTO_INCREMENT=808 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci AVG_ROW_LENGTH=211;
+
+-- addressbook.group_list definition
+
+CREATE TABLE `group_list` (
+  `domain_id` int(9) unsigned NOT NULL DEFAULT 0,
+  `group_id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `group_parent_id` int(9) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `deprecated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `group_name` varchar(255) NOT NULL DEFAULT '',
+  `group_header` mediumtext NOT NULL,
+  `group_footer` mediumtext NOT NULL,
+  PRIMARY KEY (`group_id`,`deprecated`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci AVG_ROW_LENGTH=69;
+
+-- addressbook.address_in_groups definition
+
+CREATE TABLE `address_in_groups` (
+  `domain_id` int(9) unsigned NOT NULL DEFAULT 0,
+  `id` int(9) unsigned NOT NULL DEFAULT 0,
+  `group_id` int(9) unsigned NOT NULL DEFAULT 0,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `deprecated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`group_id`,`id`,`deprecated`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci AVG_ROW_LENGTH=37;
